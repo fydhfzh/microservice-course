@@ -1,0 +1,32 @@
+{
+    email fayyadhhafizh5@gmail.com
+}
+
+(static) {
+    @static {
+        file
+        path *.ico *.css *.js *.gif *.jpg *.jpeg *.png *.svg *.woff *.json
+    }
+}
+
+(security) {
+    header {
+        # enable HSTS
+        Strict-Transport-Security max-age=31536000
+        # disable clients from sniffing the media type
+        # keep referrer data of no HTTP connections
+        Referrer-Policy no-referrer-when-downgrade
+    }
+}
+
+swarm.fydhfzh.me {
+    encode zstd gzip
+    import static
+    import security
+    
+    reverse_proxy http://front-end:8081
+}
+
+broker.fydhfzh.me {
+    reverse_proxy http://broker-service:8080
+}

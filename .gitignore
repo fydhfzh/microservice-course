@@ -1,0 +1,6 @@
+*/caddy_config/*
+*/caddy_data/*
+*/db-data/*
+
+*.code-workspace
+*.DS_Store
